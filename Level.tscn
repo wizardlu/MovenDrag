@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 15, 1, 15 )
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 30, 2, 30 )
+
+[node name="Level" type="Spatial"]
+
+[node name="Box1" type="RigidBody" parent="."]
+transform = Transform( 0.746764, 0.642109, -0.173317, -0.437519, 0.670543, 0.599124, 0.500919, -0.371575, 0.781673, 0, 4.9, -2.8 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Box1"]
+transform = Transform( 1, 1.19209e-07, -2.98023e-08, 2.98023e-08, 1, 0, -2.98023e-08, -2.98023e-08, 1, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Box1"]
+transform = Transform( 1, 1.19209e-07, -2.98023e-08, 2.98023e-08, 1, 0, -2.98023e-08, -2.98023e-08, 1, 0.0293896, -0.0450084, -0.0401802 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Box2" type="RigidBody" parent="."]
+transform = Transform( -0.0964824, 0.873549, 0.477078, -0.860099, -0.314395, 0.401727, 0.500919, -0.371575, 0.781673, 0, 12.084, -2.8 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Box2"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Box2"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Box3" type="RigidBody" parent="."]
+transform = Transform( 0.701403, 0.421252, 0.574961, -0.0764073, -0.757577, 0.648258, 0.708658, -0.498622, -0.499181, 0, 20.0734, -2.8 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Box3"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Box3"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.89316, 0.44974, 0, -0.44974, 0.89316, 0, 7.37859, 17.9102 )
+
+[node name="Floor" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.904063, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Floor"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Floor"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.153938, 1.096, 9.19618 )
+script = ExtResource( 2 )
